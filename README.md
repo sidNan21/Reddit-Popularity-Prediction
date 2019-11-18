@@ -1,6 +1,6 @@
 # Data Collection Tool for Capstone
 
-Data Collection Tool for Capstone Research
+Data Collection Tool for Capstone Research: CURRENTLY SERIALIZES *ALL* COMMENTS FOR SELECTED POSTS WITHOUT HIERARCHY INFO
 
 ## Creating credentials to use the script
 

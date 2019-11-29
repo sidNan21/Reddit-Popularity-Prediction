@@ -13,6 +13,6 @@ Data Collection Tool for Capstone Research: CURRENTLY SERIALIZES *ALL* COMMENTS 
 
 1. Make sure you're using Linux of some kind cuz I wasn't thinking about how to do stuff in Windows
 2. Follow the instructions to get the credentials
-3. `pip install praw`
+3. `pip install praw afinn spacy && python -m spacy download en`
 4. Run ./example.sh and `chmod 777 example.sh` if it has permission isues
 5. Mess around

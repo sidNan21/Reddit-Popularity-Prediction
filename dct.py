@@ -23,7 +23,8 @@ for submission in reddit.subreddit(subreddit).top(time):
     for comment in submission.comments.list():
         # Save required data from every comment
         element = {'created_utc': comment.created_utc, 'body': comment.body,
-        'score': comment.score, 'distinguished': comment.distinguished}
+        'score': comment.score, 'distinguished': comment.distinguished,
+        'parent': comment.parent_id == comment.link_id}
         # Save nlp metrics from every comment
         element['sentiment'] = afinn.score(comment.body)
         entities = spacy_nlp(comment.body).ents

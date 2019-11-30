@@ -14,5 +14,6 @@ Data Collection Tool for Capstone Research
 1. Make sure you're using Linux of some kind cuz I wasn't thinking about how to do stuff in Windows
 2. Follow the instructions to get the credentials
 3. `pip install praw afinn spacy scipy && python -m spacy download en`
-4. Run ./example.sh and `chmod 777 example.sh` if it has permission isues
+4. Run ./example.sh and `chmod 777 example.sh` if it has permission isues (or just look at the files in the data folder cause this script takes a damn brick, they're from a run of the command within example.sh on Nov 29)
 5. Mess around
+6. Note post statistics are relative to other posts not to comments within them

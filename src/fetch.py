@@ -1,7 +1,18 @@
-# Capstone Data Collection Tool
+'''
+fetch.py
+    simple tool for collection of raw reddit data...
+    expects arguments:
+        sub  - target subreddit 
+        time - target time window (e.g. top x posts this week, month, ...) 
+        num_posts    - limit number of posts
+        num_comments - limit number of comments
+    saves into a json file with simple naming convention:
+        {subreddit}_top{num_posts}{time}_t{ddmm-HHMM}.json
+'''
 
-import os, json, praw, afinn, spacy # pip install afinn spacy praw scipy && python -m spacy download en
-from scipy.stats import zscore
+import os
+import json
+import praw
 
 def fetch_top_posts(sub, time):
     # read-only reddit client
@@ -14,14 +25,37 @@ def fetch_top_posts(sub, time):
     return list(posts)
 
 def save_json(submission_list, filename=None):
-    # for post in submission_list:
-    #     with open('./data/' + post['id'] + '.json', 'w', encoding='utf-8') as f:
-    #         json.dump(post, f, ensure_ascii=False, indent=4)
-    # print("Saved to data/{0}.json".format(submission_list[0]['id']))
+    # provided no filename param, default to first post's id
     fn = filename if filename else submission_list[0]['id']
     with open('./data/' + fn + '.json', 'w', encoding='utf-8') as f:
         json.dump(submission_list, f, ensure_ascii=False, indent=4)
 
+'''
+formats raw reddit data into serialized jsons with structure:
+    data { 
+            [ 
+                submission {
+                    <str>   id, 
+                    <str>   title, 
+                    <float> created_utc, 
+                    <str>   body, 
+                    <int>   score, 
+                    <str> distinguished,
+                    comments [
+                        comment {
+                            <float> created_utc,
+                            <str>   body,
+                            <int>   score,
+                            <str>   distinguished,
+                            <bool>  parent
+                        }
+                        ..
+                    ]
+                }
+                ..
+            ]
+    }
+'''
 def fetch(sub, time, num_posts, num_comments=None):
     # top reddit posts provided target sub and time
     print('Fetching top {0} posts from /r/{1} for time: {2}...'.format(num_posts,sub,time),

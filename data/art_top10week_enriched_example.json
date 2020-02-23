@@ -14,7 +14,8 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 1.7838804905596959,
-                "entities": []
+                "entities": [],
+                "afinn_score": 6.0
             },
             {
                 "created_utc": 1582237158.0,
@@ -23,7 +24,8 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 0.23494285982920146,
-                "entities": []
+                "entities": [],
+                "afinn_score": 1.0
             },
             {
                 "created_utc": 1582230475.0,
@@ -32,7 +34,8 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.1541502730102988,
-                "entities": []
+                "entities": [],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1582228077.0,
@@ -41,7 +44,8 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.9199450376434554,
-                "entities": []
+                "entities": [],
+                "afinn_score": 3.0
             },
             {
                 "created_utc": 1582239039.0,
@@ -54,7 +58,8 @@
                     {
                         "WORK_OF_ART": "Return of The Obra Dinn\""
                     }
-                ]
+                ],
+                "afinn_score": 5.0
             }
         ]
     },
@@ -72,8 +77,22 @@
                 "score": 1052,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 2.0179295871208396,
-                "entities": []
+                "zscore": 1.9601849641705587,
+                "entities": [
+                    {
+                        "PERSON": "David Bowie"
+                    },
+                    {
+                        "PERSON": "Tom"
+                    },
+                    {
+                        "GPE": "Blackstar"
+                    },
+                    {
+                        "PERSON": "David Bowie's"
+                    }
+                ],
+                "afinn_score": 6.0
             },
             {
                 "created_utc": 1581721813.0,
@@ -81,8 +100,13 @@
                 "score": 152,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.3978833546859972,
-                "entities": []
+                "zscore": -0.5557398329679222,
+                "entities": [
+                    {
+                        "ORG": "Silo"
+                    }
+                ],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1581717103.0,
@@ -90,8 +114,9 @@
                 "score": 263,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.009072258901635115,
-                "entities": []
+                "zscore": -0.24544244132084292,
+                "entities": [],
+                "afinn_score": -6.0
             },
             {
                 "created_utc": 1581717201.0,
@@ -99,8 +124,9 @@
                 "score": 57,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.8100231162174211,
-                "entities": []
+                "zscore": -0.821309672665873,
+                "entities": [],
+                "afinn_score": -3.0
             },
             {
                 "created_utc": 1581718800.0,
@@ -108,12 +134,9 @@
                 "score": 230,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.8359438559363785,
-                "entities": [
-                    {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
-                    }
-                ]
+                "zscore": -0.33769301721592054,
+                "entities": [],
+                "afinn_score": 0.0
             }
         ]
     },
@@ -131,8 +154,13 @@
                 "score": 1833,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.332508767837743,
-                "entities": []
+                "zscore": 1.7404959864782283,
+                "entities": [
+                    {
+                        "PERSON": "Dude"
+                    }
+                ],
+                "afinn_score": 4.0
             },
             {
                 "created_utc": 1582084286.0,
@@ -140,8 +168,9 @@
                 "score": 1008,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.10016490885788293,
-                "entities": []
+                "zscore": 0.4531468840535032,
+                "entities": [],
+                "afinn_score": 8.0
             },
             {
                 "created_utc": 1582081802.0,
@@ -149,8 +178,16 @@
                 "score": 441,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.2093998685178579,
-                "entities": []
+                "zscore": -0.4316130445220351,
+                "entities": [
+                    {
+                        "PERSON": "dang"
+                    },
+                    {
+                        "PERSON": "haha"
+                    }
+                ],
+                "afinn_score": 7.0
             },
             {
                 "created_utc": 1582083209.0,
@@ -158,8 +195,13 @@
                 "score": 227,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.8186706723975007,
-                "entities": []
+                "zscore": -0.7655435995752365,
+                "entities": [
+                    {
+                        "PERCENT": "100%"
+                    }
+                ],
+                "afinn_score": 8.0
             },
             {
                 "created_utc": 1582093804.0,
@@ -167,12 +209,13 @@
                 "score": 79,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.8383881741411785,
+                "zscore": -0.9964862264344599,
                 "entities": [
                     {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
+                        "PERSON": "Fuck YES"
                     }
-                ]
+                ],
+                "afinn_score": 2.0
             }
         ]
     },
@@ -190,8 +233,9 @@
                 "score": 1145,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.4654856845742845,
-                "entities": []
+                "zscore": 1.9607055443755919,
+                "entities": [],
+                "afinn_score": 1.0
             },
             {
                 "created_utc": 1582039633.0,
@@ -199,8 +243,9 @@
                 "score": 211,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.19061818807636838,
-                "entities": []
+                "zscore": -0.31873057517482245,
+                "entities": [],
+                "afinn_score": 2.0
             },
             {
                 "created_utc": 1582037358.0,
@@ -208,8 +253,13 @@
                 "score": 246,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.12962852704390812,
-                "entities": []
+                "zscore": -0.2333127334357812,
+                "entities": [
+                    {
+                        "GPE": "Kansas"
+                    }
+                ],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1582043290.0,
@@ -217,8 +267,9 @@
                 "score": 78,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.7599230173124778,
-                "entities": []
+                "zscore": -0.6433183737831791,
+                "entities": [],
+                "afinn_score": 5.0
             },
             {
                 "created_utc": 1582040631.0,
@@ -226,12 +277,9 @@
                 "score": 28,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.7803208972564445,
-                "entities": [
-                    {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
-                    }
-                ]
+                "zscore": -0.7653438619818094,
+                "entities": [],
+                "afinn_score": 2.0
             }
         ]
     },
@@ -249,8 +297,9 @@
                 "score": 1930,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.2989058132281819,
-                "entities": []
+                "zscore": 1.959215980686753,
+                "entities": [],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1581938147.0,
@@ -258,8 +307,19 @@
                 "score": 288,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.14405186240933912,
-                "entities": []
+                "zscore": -0.36691029573237094,
+                "entities": [
+                    {
+                        "ORG": "Microsoft"
+                    },
+                    {
+                        "ORG": "Google"
+                    },
+                    {
+                        "ORG": "Yahoo"
+                    }
+                ],
+                "afinn_score": 2.0
             },
             {
                 "created_utc": 1581939391.0,
@@ -267,8 +327,9 @@
                 "score": 418,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.14604745003635417,
-                "entities": []
+                "zscore": -0.18274682683195312,
+                "entities": [],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1581935912.0,
@@ -276,8 +337,9 @@
                 "score": 52,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.7170072433211899,
-                "entities": []
+                "zscore": -0.7012378238900526,
+                "entities": [],
+                "afinn_score": 6.0
             },
             {
                 "created_utc": 1581947961.0,
@@ -285,12 +347,9 @@
                 "score": 47,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.7354849065342914,
-                "entities": [
-                    {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
-                    }
-                ]
+                "zscore": -0.7083210342323764,
+                "entities": [],
+                "afinn_score": 0.0
             }
         ]
     },
@@ -308,8 +367,9 @@
                 "score": 1175,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.3600721839308965,
-                "entities": []
+                "zscore": 1.7440513478131825,
+                "entities": [],
+                "afinn_score": 8.0
             },
             {
                 "created_utc": 1581852099.0,
@@ -317,8 +377,16 @@
                 "score": 621,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.17434877068384622,
-                "entities": []
+                "zscore": 0.4950797259304226,
+                "entities": [
+                    {
+                        "LANGUAGE": "english"
+                    },
+                    {
+                        "GPE": "kinda"
+                    }
+                ],
+                "afinn_score": 1.0
             },
             {
                 "created_utc": 1581850995.0,
@@ -326,8 +394,9 @@
                 "score": 144,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.1235049507238128,
-                "entities": []
+                "zscore": -0.5802983672791018,
+                "entities": [],
+                "afinn_score": 4.0
             },
             {
                 "created_utc": 1581852507.0,
@@ -335,8 +404,19 @@
                 "score": 41,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.7097266062331544,
-                "entities": []
+                "zscore": -0.8125078926471961,
+                "entities": [
+                    {
+                        "ORG": "cao"
+                    },
+                    {
+                        "PRODUCT": "sao vang"
+                    },
+                    {
+                        "NORP": "Vietnamese"
+                    }
+                ],
+                "afinn_score": 5.0
             },
             {
                 "created_utc": 1581853838.0,
@@ -344,12 +424,16 @@
                 "score": 26,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.7286981808451073,
+                "zscore": -0.846324813817307,
                 "entities": [
                     {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
+                        "PERSON": "Corona"
+                    },
+                    {
+                        "TIME": "2 hours"
                     }
-                ]
+                ],
+                "afinn_score": 4.0
             }
         ]
     },
@@ -367,8 +451,13 @@
                 "score": 134,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.5240083297323388,
-                "entities": []
+                "zscore": 1.2427411682026506,
+                "entities": [
+                    {
+                        "PRODUCT": "Run Wild"
+                    }
+                ],
+                "afinn_score": 3.0
             },
             {
                 "created_utc": 1582127521.0,
@@ -376,8 +465,9 @@
                 "score": 66,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.2906953848581236,
-                "entities": []
+                "zscore": -0.4207706317536534,
+                "entities": [],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1582133450.0,
@@ -385,8 +475,9 @@
                 "score": 123,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.019112826894279317,
-                "entities": []
+                "zscore": 0.9736436711508956,
+                "entities": [],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1582130624.0,
@@ -394,8 +485,13 @@
                 "score": 71,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.6288627468400914,
-                "entities": []
+                "zscore": -0.2984535876392193,
+                "entities": [
+                    {
+                        "PERSON": "Jumavei ja jumavoi käppee"
+                    }
+                ],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1582132402.0,
@@ -403,12 +499,9 @@
                 "score": 22,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.6485957539580788,
-                "entities": [
-                    {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
-                    }
-                ]
+                "zscore": -1.4971606199606737,
+                "entities": [],
+                "afinn_score": 3.0
             }
         ]
     },
@@ -426,8 +519,19 @@
                 "score": 641,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.644382481721759,
-                "entities": []
+                "zscore": 1.9965261616446353,
+                "entities": [
+                    {
+                        "CARDINAL": "6"
+                    },
+                    {
+                        "CARDINAL": "4"
+                    },
+                    {
+                        "PERSON": "LOL"
+                    }
+                ],
+                "afinn_score": 3.0
             },
             {
                 "created_utc": 1582200446.0,
@@ -435,8 +539,9 @@
                 "score": 50,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.36820323598109606,
-                "entities": []
+                "zscore": -0.41448111569900886,
+                "entities": [],
+                "afinn_score": 11.0
             },
             {
                 "created_utc": 1582204295.0,
@@ -444,8 +549,9 @@
                 "score": 40,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.047627009451041515,
-                "entities": []
+                "zscore": -0.45527650110245466,
+                "entities": [],
+                "afinn_score": 1.0
             },
             {
                 "created_utc": 1582208127.0,
@@ -453,8 +559,13 @@
                 "score": 14,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.5833160096431422,
-                "entities": []
+                "zscore": -0.5613445031514136,
+                "entities": [
+                    {
+                        "CARDINAL": "1/3"
+                    }
+                ],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1582212134.0,
@@ -462,12 +573,9 @@
                 "score": 13,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.6037348775749928,
-                "entities": [
-                    {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
-                    }
-                ]
+                "zscore": -0.5654240416917582,
+                "entities": [],
+                "afinn_score": 1.0
             }
         ]
     },
@@ -485,8 +593,9 @@
                 "score": 491,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.7625028960981062,
-                "entities": []
+                "zscore": 1.7903905538775793,
+                "entities": [],
+                "afinn_score": 7.0
             },
             {
                 "created_utc": 1582162257.0,
@@ -494,8 +603,9 @@
                 "score": 245,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.43239680098274624,
-                "entities": []
+                "zscore": 0.38772789064864777,
+                "entities": [],
+                "afinn_score": 3.0
             },
             {
                 "created_utc": 1582165782.0,
@@ -503,8 +613,9 @@
                 "score": 75,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.0982741498897678,
-                "entities": []
+                "zscore": -0.5815918359729716,
+                "entities": [],
+                "afinn_score": 5.0
             },
             {
                 "created_utc": 1582167377.0,
@@ -512,8 +623,9 @@
                 "score": 59,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.5593303035352661,
-                "entities": []
+                "zscore": -0.6728219278903005,
+                "entities": [],
+                "afinn_score": 6.0
             },
             {
                 "created_utc": 1582162986.0,
@@ -521,12 +633,9 @@
                 "score": 15,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.5806120010571119,
-                "entities": [
-                    {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
-                    }
-                ]
+                "zscore": -0.923704680662955,
+                "entities": [],
+                "afinn_score": 10.0
             }
         ]
     },
@@ -544,8 +653,9 @@
                 "score": 906,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 1.8033314005380403,
-                "entities": []
+                "zscore": 1.639277050806497,
+                "entities": [],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1581890254.0,
@@ -553,8 +663,9 @@
                 "score": 206,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.43228533901421584,
-                "entities": []
+                "zscore": -0.7266898266461791,
+                "entities": [],
+                "afinn_score": 0.0
             },
             {
                 "created_utc": 1581888062.0,
@@ -562,8 +673,9 @@
                 "score": 622,
                 "distinguished": null,
                 "parent": true,
-                "zscore": 0.08787856835943107,
-                "entities": []
+                "zscore": 0.6793704890971256,
+                "entities": [],
+                "afinn_score": -1.0
             },
             {
                 "created_utc": 1581882912.0,
@@ -571,8 +683,9 @@
                 "score": 235,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.5899666044579478,
-                "entities": []
+                "zscore": -0.6286711988659968,
+                "entities": [],
+                "afinn_score": 3.0
             },
             {
                 "created_utc": 1581887264.0,
@@ -580,12 +693,13 @@
                 "score": 136,
                 "distinguished": null,
                 "parent": true,
-                "zscore": -0.611903341442329,
+                "zscore": -0.9632865143914467,
                 "entities": [
                     {
-                        "WORK_OF_ART": "Return of The Obra Dinn\""
+                        "ORDINAL": "first"
                     }
-                ]
+                ],
+                "afinn_score": 3.0
             }
         ]
     }

@@ -38,6 +38,10 @@ class Aggregator(Enricher):
         # no other type support
         return None
 
+    def flush(self):
+        # reset for new collection of comments
+        self.collection = dict([])
+
     def collect(self, element, store=None, fn=None):
         # must have a destination bucket
         if not store:
@@ -79,7 +83,7 @@ ZSCORE_AGGREGATOR = Aggregator(name='zscore',
                                source='zscore_collection',
                                where=1)
 
-# more complex for retrieving spacy entities
+# more complex since an external model is required
 def get_entities(element):
     spacy_nlp = spacy.load('en')
     entities = spacy_nlp(element).ents
@@ -92,6 +96,19 @@ ENTITIES_AGGREGATOR = Aggregator(name='entities',
                                  store='entity_collection',
                                  source='entity_collection',
                                  where='entity_collection')
+
+# more complex since an external model is required
+def afinn_elementwise(element):
+    afinn_nlp = afinn.Afinn(language='en', emoticons=True)
+    return afinn_nlp.score(element)
+
+AFINN_AGGREGATOR = Aggregator(name='afinn_score',
+                              fn_elementwise=afinn_elementwise,
+                              fn_aggregate=None,
+                              element_key='body',
+                              store='afinn_collection',
+                              source='afinn_collection',
+                              where='afinn_collection')
 
 def load_as_dict(path):
     try:
@@ -131,8 +148,11 @@ def enrich(path, comment_enrichers=[], submission_enrichers=[]):
             for ce in comment_enrichers:
                 comment[ce.name] = ce.collection[ce.where][i]
             i += 1
+        # flush all
+        for ce in comment_enrichers:
+            ce.flush()
 
     return data
 
 def enrich_test(path):
-    return enrich(path, [ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR])
+    return enrich(path, [ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR, AFINN_AGGREGATOR])

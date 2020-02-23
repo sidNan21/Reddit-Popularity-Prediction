@@ -9,14 +9,27 @@ import json
 import afinn
 import spacy
 import scipy.stats as stats
+import tools
 
 class Enricher:
     def __init__(self, name):
         self.name = name
 
 class Aggregator(Enricher):
-    def __init__(self, name, fn_elementwise=None, fn_aggregate=None, \
-                 element_key=None, where=None, source=None, store=None):
+    '''
+    general enrichment process:
+        1. collect: 
+            -- apply element-wise function*1 and collect elements in C[store]
+        2. dump:
+            -- apply aggregate function*2 on iterable C[source], store result in C[where]*3
+        3. flush:
+            -- empty C's contents for next collection of elements
+
+        *1 -- no defined element-wise function --> do nothing to element
+        *2 -- no defined aggregate function    --> do nothing to iterable
+        *3 -- no defined where --> return resultant iterable
+    '''
+    def __init__(self, name, fn_elementwise=None, fn_aggregate=None, element_key=None, where=None, source=None, store=None):
         Enricher.__init__(self, name)
         self.elementwise = fn_elementwise if fn_elementwise else lambda x: x
         self.aggregate   = fn_aggregate
@@ -37,10 +50,6 @@ class Aggregator(Enricher):
             return key if len(key) > 0 else None
         # no other type support
         return None
-
-    def flush(self):
-        # reset for new collection of comments
-        self.collection = dict([])
 
     def collect(self, element, store=None, fn=None):
         # must have a destination bucket
@@ -74,6 +83,10 @@ class Aggregator(Enricher):
         # otherwise, dump at destination
         self.collection[where] = func(self.collection[source])
         return None
+    
+    def flush(self):
+        # reset for new collection of comments
+        self.collection = dict([])
 
 class EnrichmentPipeline():
     def __init__(self, comment_enrichers=[]):
@@ -105,6 +118,9 @@ class EnrichmentPipeline():
         for ce in self.comment_enrichers:
             ce.flush()
 
+'''
+pre-defined aggregator examples
+'''
 ZSCORE_AGGREGATOR = Aggregator(name='zscore',
                                fn_elementwise=None,
                                fn_aggregate=stats.zscore,
@@ -140,14 +156,7 @@ AFINN_AGGREGATOR = Aggregator(name='afinn_score',
                               source='afinn_collection',
                               where='afinn_collection')
 
-def load_as_dict(path):
-    try:
-        with open(path) as f:
-            return json.load(f)
-    except Exception as e:
-        print(e)
-        return None
-
+# ensure data is valid for pipeline enrichment
 def validate(data):
     # verify type
     assert data and type(data) == list, 'unexpected input type: {0}'.format(type(data))
@@ -157,8 +166,9 @@ def validate(data):
     assert type(data[0]['score']) == int
     assert len(data[0]['comments']) > 0 
 
+# pipeline enrichment that accepts Aggregator objects to define pipeline
 def enrich(path, comment_enrichers=[], submission_enrichers=[]):
-    data = load_as_dict(path)
+    data = tools.load_json(path)
     # validation step, begin work after
     validate(data)
     # TODO: deal w submission enrichers later...
@@ -176,4 +186,4 @@ def enrich(path, comment_enrichers=[], submission_enrichers=[]):
     return data
 
 def enrich_test(path):
-    return enrich(path, [ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR])
+    return enrich(path, comment_enrichers=[ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR, AFINN_AGGREGATOR])

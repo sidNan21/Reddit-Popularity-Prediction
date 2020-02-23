@@ -75,6 +75,22 @@ class Aggregator(Enricher):
         self.collection[where] = func(self.collection[source])
         return None
 
+class EnrichmentPipeline():
+    def __init__(self, comment_enrichers=[]):
+        for ce in comment_enrichers:
+            assert type(ce) == Aggregator
+        self.comment_enrichers = comment_enrichers
+    
+    def collect_all(self, comment, stores=None, fns=None):
+        # TODO: zipped multiple different parameters (as lists)
+        for ce in self.comment_enrichers:
+            ce.collect(comment, None, None)
+    
+    def dump_all(self, sources=None, wheres=None, fns=None):
+        # TODO: zipped multiple different parameters (as lists)
+        for ce in self.comment_enrichers:
+            ce.dump(None, None, None)
+
 ZSCORE_AGGREGATOR = Aggregator(name='zscore',
                                fn_elementwise=None,
                                fn_aggregate=stats.zscore,

@@ -24,12 +24,6 @@ def fetch_top_posts(sub, time):
     print('Connected!')
     return list(posts)
 
-def save_json(submission_list, filename=None):
-    # provided no filename param, default to first post's id
-    fn = filename if filename else submission_list[0]['id']
-    with open('./data/' + fn + '.json', 'w', encoding='utf-8') as f:
-        json.dump(submission_list, f, ensure_ascii=False, indent=4)
-
 '''
 formats raw reddit data into serialized jsons with structure:
     data { 

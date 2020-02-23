@@ -12,6 +12,7 @@ dct.py
 '''
 
 import src.fetch as fetch
+import src.tools as tools
 import time as t
 import sys
 
@@ -30,4 +31,4 @@ filename = '{0}_top{1}{2}_t{3}' \
                 ) if len(sys.argv) < 6 else sys.argv[5]
 
 submissions = fetch.fetch(subreddit, time, num_posts, num_comments)
-fetch.save_json(submissions, filename)
+tools.save_json(submissions, filename)

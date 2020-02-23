@@ -14,8 +14,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 1.7838804905596959,
-                "entities": [],
-                "afinn_score": 6.0
+                "entities": []
             },
             {
                 "created_utc": 1582237158.0,
@@ -24,8 +23,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 0.23494285982920146,
-                "entities": [],
-                "afinn_score": 1.0
+                "entities": []
             },
             {
                 "created_utc": 1582230475.0,
@@ -34,8 +32,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.1541502730102988,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             },
             {
                 "created_utc": 1582228077.0,
@@ -44,8 +41,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.9199450376434554,
-                "entities": [],
-                "afinn_score": 3.0
+                "entities": []
             },
             {
                 "created_utc": 1582239039.0,
@@ -58,8 +54,7 @@
                     {
                         "WORK_OF_ART": "Return of The Obra Dinn\""
                     }
-                ],
-                "afinn_score": 5.0
+                ]
             }
         ]
     },
@@ -91,8 +86,7 @@
                     {
                         "PERSON": "David Bowie's"
                     }
-                ],
-                "afinn_score": 6.0
+                ]
             },
             {
                 "created_utc": 1581721813.0,
@@ -105,8 +99,7 @@
                     {
                         "ORG": "Silo"
                     }
-                ],
-                "afinn_score": 0.0
+                ]
             },
             {
                 "created_utc": 1581717103.0,
@@ -115,8 +108,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.24544244132084292,
-                "entities": [],
-                "afinn_score": -6.0
+                "entities": []
             },
             {
                 "created_utc": 1581717201.0,
@@ -125,8 +117,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.821309672665873,
-                "entities": [],
-                "afinn_score": -3.0
+                "entities": []
             },
             {
                 "created_utc": 1581718800.0,
@@ -135,8 +126,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.33769301721592054,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             }
         ]
     },
@@ -159,8 +149,7 @@
                     {
                         "PERSON": "Dude"
                     }
-                ],
-                "afinn_score": 4.0
+                ]
             },
             {
                 "created_utc": 1582084286.0,
@@ -169,8 +158,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 0.4531468840535032,
-                "entities": [],
-                "afinn_score": 8.0
+                "entities": []
             },
             {
                 "created_utc": 1582081802.0,
@@ -186,8 +174,7 @@
                     {
                         "PERSON": "haha"
                     }
-                ],
-                "afinn_score": 7.0
+                ]
             },
             {
                 "created_utc": 1582083209.0,
@@ -200,8 +187,7 @@
                     {
                         "PERCENT": "100%"
                     }
-                ],
-                "afinn_score": 8.0
+                ]
             },
             {
                 "created_utc": 1582093804.0,
@@ -214,8 +200,7 @@
                     {
                         "PERSON": "Fuck YES"
                     }
-                ],
-                "afinn_score": 2.0
+                ]
             }
         ]
     },
@@ -234,8 +219,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 1.9607055443755919,
-                "entities": [],
-                "afinn_score": 1.0
+                "entities": []
             },
             {
                 "created_utc": 1582039633.0,
@@ -244,8 +228,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.31873057517482245,
-                "entities": [],
-                "afinn_score": 2.0
+                "entities": []
             },
             {
                 "created_utc": 1582037358.0,
@@ -258,8 +241,7 @@
                     {
                         "GPE": "Kansas"
                     }
-                ],
-                "afinn_score": 0.0
+                ]
             },
             {
                 "created_utc": 1582043290.0,
@@ -268,8 +250,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.6433183737831791,
-                "entities": [],
-                "afinn_score": 5.0
+                "entities": []
             },
             {
                 "created_utc": 1582040631.0,
@@ -278,8 +259,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.7653438619818094,
-                "entities": [],
-                "afinn_score": 2.0
+                "entities": []
             }
         ]
     },
@@ -298,8 +278,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 1.959215980686753,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             },
             {
                 "created_utc": 1581938147.0,
@@ -318,8 +297,7 @@
                     {
                         "ORG": "Yahoo"
                     }
-                ],
-                "afinn_score": 2.0
+                ]
             },
             {
                 "created_utc": 1581939391.0,
@@ -328,8 +306,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.18274682683195312,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             },
             {
                 "created_utc": 1581935912.0,
@@ -338,8 +315,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.7012378238900526,
-                "entities": [],
-                "afinn_score": 6.0
+                "entities": []
             },
             {
                 "created_utc": 1581947961.0,
@@ -348,8 +324,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.7083210342323764,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             }
         ]
     },
@@ -368,8 +343,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 1.7440513478131825,
-                "entities": [],
-                "afinn_score": 8.0
+                "entities": []
             },
             {
                 "created_utc": 1581852099.0,
@@ -385,8 +359,7 @@
                     {
                         "GPE": "kinda"
                     }
-                ],
-                "afinn_score": 1.0
+                ]
             },
             {
                 "created_utc": 1581850995.0,
@@ -395,8 +368,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.5802983672791018,
-                "entities": [],
-                "afinn_score": 4.0
+                "entities": []
             },
             {
                 "created_utc": 1581852507.0,
@@ -415,8 +387,7 @@
                     {
                         "NORP": "Vietnamese"
                     }
-                ],
-                "afinn_score": 5.0
+                ]
             },
             {
                 "created_utc": 1581853838.0,
@@ -432,8 +403,7 @@
                     {
                         "TIME": "2 hours"
                     }
-                ],
-                "afinn_score": 4.0
+                ]
             }
         ]
     },
@@ -456,8 +426,7 @@
                     {
                         "PRODUCT": "Run Wild"
                     }
-                ],
-                "afinn_score": 3.0
+                ]
             },
             {
                 "created_utc": 1582127521.0,
@@ -466,8 +435,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.4207706317536534,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             },
             {
                 "created_utc": 1582133450.0,
@@ -476,8 +444,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 0.9736436711508956,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             },
             {
                 "created_utc": 1582130624.0,
@@ -490,8 +457,7 @@
                     {
                         "PERSON": "Jumavei ja jumavoi käppee"
                     }
-                ],
-                "afinn_score": 0.0
+                ]
             },
             {
                 "created_utc": 1582132402.0,
@@ -500,8 +466,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -1.4971606199606737,
-                "entities": [],
-                "afinn_score": 3.0
+                "entities": []
             }
         ]
     },
@@ -530,8 +495,7 @@
                     {
                         "PERSON": "LOL"
                     }
-                ],
-                "afinn_score": 3.0
+                ]
             },
             {
                 "created_utc": 1582200446.0,
@@ -540,8 +504,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.41448111569900886,
-                "entities": [],
-                "afinn_score": 11.0
+                "entities": []
             },
             {
                 "created_utc": 1582204295.0,
@@ -550,8 +513,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.45527650110245466,
-                "entities": [],
-                "afinn_score": 1.0
+                "entities": []
             },
             {
                 "created_utc": 1582208127.0,
@@ -564,8 +526,7 @@
                     {
                         "CARDINAL": "1/3"
                     }
-                ],
-                "afinn_score": 0.0
+                ]
             },
             {
                 "created_utc": 1582212134.0,
@@ -574,8 +535,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.5654240416917582,
-                "entities": [],
-                "afinn_score": 1.0
+                "entities": []
             }
         ]
     },
@@ -594,8 +554,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 1.7903905538775793,
-                "entities": [],
-                "afinn_score": 7.0
+                "entities": []
             },
             {
                 "created_utc": 1582162257.0,
@@ -604,8 +563,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 0.38772789064864777,
-                "entities": [],
-                "afinn_score": 3.0
+                "entities": []
             },
             {
                 "created_utc": 1582165782.0,
@@ -614,8 +572,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.5815918359729716,
-                "entities": [],
-                "afinn_score": 5.0
+                "entities": []
             },
             {
                 "created_utc": 1582167377.0,
@@ -624,8 +581,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.6728219278903005,
-                "entities": [],
-                "afinn_score": 6.0
+                "entities": []
             },
             {
                 "created_utc": 1582162986.0,
@@ -634,8 +590,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.923704680662955,
-                "entities": [],
-                "afinn_score": 10.0
+                "entities": []
             }
         ]
     },
@@ -654,8 +609,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 1.639277050806497,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             },
             {
                 "created_utc": 1581890254.0,
@@ -664,8 +618,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.7266898266461791,
-                "entities": [],
-                "afinn_score": 0.0
+                "entities": []
             },
             {
                 "created_utc": 1581888062.0,
@@ -674,8 +627,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": 0.6793704890971256,
-                "entities": [],
-                "afinn_score": -1.0
+                "entities": []
             },
             {
                 "created_utc": 1581882912.0,
@@ -684,8 +636,7 @@
                 "distinguished": null,
                 "parent": true,
                 "zscore": -0.6286711988659968,
-                "entities": [],
-                "afinn_score": 3.0
+                "entities": []
             },
             {
                 "created_utc": 1581887264.0,
@@ -698,8 +649,7 @@
                     {
                         "ORDINAL": "first"
                     }
-                ],
-                "afinn_score": 3.0
+                ]
             }
         ]
     }

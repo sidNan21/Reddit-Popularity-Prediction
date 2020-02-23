@@ -81,15 +81,29 @@ class EnrichmentPipeline():
             assert type(ce) == Aggregator
         self.comment_enrichers = comment_enrichers
     
-    def collect_all(self, comment, stores=None, fns=None):
+    # add comment to every enricher's collection
+    def collect_all(self, comments, stores=None, fns=None):
         # TODO: zipped multiple different parameters (as lists)
-        for ce in self.comment_enrichers:
-            ce.collect(comment, None, None)
+        for comment in comments:
+            for ce in self.comment_enrichers:
+                ce.collect(comment, None, None)
     
+    # have every enricher process aggregate of comments, if defined
     def dump_all(self, sources=None, wheres=None, fns=None):
         # TODO: zipped multiple different parameters (as lists)
         for ce in self.comment_enrichers:
             ce.dump(None, None, None)
+
+    # have every enricher store internally-dumped data to external source
+    def store_all(self, comments):
+        for comment, i in zip(comments, range(len(comments))):
+            for ce in self.comment_enrichers:
+                comment[ce.name] = ce.collection[ce.where][i]
+    
+    # have every enricher flush current collection of comments
+    def flush_all(self):
+        for ce in self.comment_enrichers:
+            ce.flush()
 
 ZSCORE_AGGREGATOR = Aggregator(name='zscore',
                                fn_elementwise=None,
@@ -148,27 +162,18 @@ def enrich(path, comment_enrichers=[], submission_enrichers=[]):
     # validation step, begin work after
     validate(data)
     # TODO: deal w submission enrichers later...
+    pipeline = EnrichmentPipeline(comment_enrichers)
     # enrich data
     for submission in data:
         # collect all comments
-        for comment in submission['comments']:    
-            # add to all enrichers
-            for ce in comment_enrichers:
-                ce.collect(comment)
+        pipeline.collect_all(submission['comments'])
         # aggregate all
-        for ce in comment_enrichers:
-            # assume: no where provided for Aggregators
-            ce.dump()
-        i = 0
-        for comment in submission['comments']:
-            for ce in comment_enrichers:
-                comment[ce.name] = ce.collection[ce.where][i]
-            i += 1
+        pipeline.dump_all()
+        pipeline.store_all(submission['comments'])
         # flush all
-        for ce in comment_enrichers:
-            ce.flush()
+        pipeline.flush_all()
 
     return data
 
 def enrich_test(path):
-    return enrich(path, [ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR, AFINN_AGGREGATOR])
+    return enrich(path, [ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR])

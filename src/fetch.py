@@ -2,8 +2,8 @@
 fetch.py
     simple tool for collection of raw reddit data...
     expects arguments:
-        sub  - target subreddit 
-        time - target time window (e.g. top x posts this week, month, ...) 
+        sub  - target subreddit
+        time - target time window (e.g. top x posts this week, month, ...)
         num_posts    - limit number of posts
         num_comments - limit number of comments
     saves into a json file with simple naming convention:
@@ -26,14 +26,14 @@ def fetch_top_posts(sub, time):
 
 '''
 formats raw reddit data into serialized jsons with structure:
-    data { 
-            [ 
+    data {
+            [
                 submission {
-                    <str>   id, 
-                    <str>   title, 
-                    <float> created_utc, 
-                    <str>   body, 
-                    <int>   score, 
+                    <str>   id,
+                    <str>   title,
+                    <float> created_utc,
+                    <str>   body,
+                    <int>   score,
                     <str> distinguished,
                     comments [
                         comment {
@@ -55,13 +55,14 @@ def fetch(sub, time, num_posts, num_comments=None):
     print('fetching top {0} posts from /r/{1} for time: {2}...'.format(num_posts,sub,time),
           ('' if not num_comments else 'limiting to {0} comments per post'.format(num_comments)))
     posts = fetch_top_posts(sub, time)[:num_posts]
-    
+
     # list to build json
     submission_list = list()
     print('serializing data...')
+    iteration = 1
     for submission in posts:
         # no hierarchy for comments...
-        submission.comments.replace_more(limit=None)
+        submission.comments.replace_more(limit=0)
         # basic post data
         submission_data = {
             'id'            : submission.id,
@@ -72,10 +73,8 @@ def fetch(sub, time, num_posts, num_comments=None):
             'distinguished' : submission.distinguished
         }
         # organize comment data
-        comments = submission.comments.list()
-        comments = comments[:num_comments] if num_comments else comments
         comment_list = list()
-        for comment in comments:
+        for comment in submission.comments[:num_comments]:
             # basic comment data
             comment_data = {
                 'created_utc'   : comment.created_utc,
@@ -89,7 +88,9 @@ def fetch(sub, time, num_posts, num_comments=None):
         submission_data['comments'] = comment_list
         # append
         submission_list.append(submission_data)
-    
+        print("Percent Complete: " + str(iteration/num_comments * 100) + "%")
+        iteration += 1
+
     print('done!')
     # serialize to json
     return submission_list
@@ -99,7 +100,7 @@ def flat_fetch(sub, time, num_posts, num_comments=None):
     print('(flat_fetch) fetching top {0} posts from /r/{1} for time: {2}...'.format(num_posts,sub,time),
           ('' if not num_comments else 'limiting to {0} comments per post'.format(num_comments)))
     posts = fetch_top_posts(sub, time)[:num_posts]
-    
+
     # list to build json
     all_submissions = list()
     print('Serializing data...')

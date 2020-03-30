@@ -106,7 +106,7 @@ def flat_fetch(sub, time, num_posts, num_comments=None):
     print('Serializing data...')
     for submission in posts:
         # no hierarchy for comments...
-        submission.comments.replace_more(limit=None)
+        submission.comments.replace_more(limit=0)
         # basic post data
         submission_data = {
             'id'            : submission.id,

@@ -9,125 +9,90 @@ import json
 import afinn
 import spacy
 import scipy.stats as stats
-import tools
+import src.tools as tools
 
-class Enricher:
-    def __init__(self, name):
-        self.name = name
-
-class Aggregator(Enricher):
-    '''
-    general enrichment process:
-        1. collect: 
-            -- apply element-wise function*1 and collect elements in C[store]
-        2. dump:
-            -- apply aggregate function*2 on iterable C[source], store result in C[where]*3
-        3. flush:
-            -- empty C's contents for next collection of elements
-
-        *1 -- no defined element-wise function --> do nothing to element
-        *2 -- no defined aggregate function    --> do nothing to iterable
-        *3 -- no defined where --> return resultant iterable
-    '''
-    def __init__(self, name, fn_elementwise=None, fn_aggregate=None, element_key=None, where=None, source=None, store=None):
-        Enricher.__init__(self, name)
-        self.elementwise = fn_elementwise if fn_elementwise else lambda x: x
-        self.aggregate   = fn_aggregate
-        self.collection  = dict([])
-        self.key    = element_key
-        self.where  = self.enforce_key(where)
-        self.source = self.enforce_key(source)
-        self.store  = self.enforce_key(store)
+class Mapper:
+    def __init__(self, label, fn_map=None, key=None):
+        self.label = label
+        self._fn  = fn_map if fn_map else lambda x: x
+        self._dat = []
+        self._k   = key
     
-    def enforce_key(self, key):
-        if not key:
+    def collect(self, x):
+        # collection of iterable type
+        if type(self._at(x)) is type([]):
+            self._dat += map(self._fn, self._at(x))
+            return
+        # collection of scalar
+        self._dat.append(self._fn(self._at(x)))
+
+    def data(self):
+        return self._dat
+
+    def clear(self):
+        self._dat = []
+
+    def _at(self, x):
+        return x if not self._k else x[self._k]
+
+
+class Aggregator(Mapper):
+    def __init__(self, label, fn_map=lambda x: x, fn_red=None, fn_agg=None, key=None):
+        Mapper.__init__(self, label, fn_map, key)
+        self._fn_red = fn_red
+        self._fn_agg = fn_agg
+    
+    def reduce(self):
+        if not self._fn_red:
             return None
-        # all ints are allowed
-        if type(key) == int:
-            return key
-        # strings must not be empty
-        if type(key) == str:
-            return key if len(key) > 0 else None
-        # no other type support
-        return None
+        return functools.reduce(self._fn_red, self._dat)
+    
+    def aggregate(self):
+        if not self._fn_agg:
+            return self._dat 
+        self._dat = list(self._fn_agg(self._dat))
+        return self._dat
 
-    def collect(self, element, store=None, fn=None):
-        # must have a destination bucket
-        if not store:
-            store = self.store if self.store is not None else None
-        if store is None:
-            return False
-        if store not in self.collection.keys():
-            self.collection[store] = list()
-        # collect
-        self.collection[store].append(
-            # apply elementwise function, if specified
-            self.elementwise(element if self.key is None else element[self.key]) \
-                if callable(self.elementwise) \
-                else lambda x: x # default fn (does nothing)
-        )
-        # success
-        return True
-    
-    def dump(self, source=None, where=None, fn=None):
-        func = fn if fn is not None else self.aggregate
-        source = source if source is not None else self.source
-        where  = where  if where  is not None else self.where
-        # aggregate/source not defined, do nothing and dump raw to where
-        if not callable(func) or source is None:
-            self.collection[where] = self.collection[source]
-            return None
-        # no destination defined, return aggregated value
-        if not where:
-            return func(self.collection[source])
-        # otherwise, dump at destination
-        self.collection[where] = func(self.collection[source])
-        return None
-    
-    def flush(self):
-        # reset for new collection of comments
-        self.collection = dict([])
 
 class EnrichmentPipeline():
-    def __init__(self, comment_enrichers=[]):
-        for ce in comment_enrichers:
+    def __init__(self, enrichers=[]):
+        for ce in enrichers:
             assert type(ce) == Aggregator
-        self.comment_enrichers = comment_enrichers
+        self.enrichers = enrichers
     
     # add comment to every enricher's collection
-    def collect_all(self, comments, stores=None, fns=None):
+    def collect_all(self, comments):
         # TODO: zipped multiple different parameters (as lists)
-        for comment in comments:
-            for ce in self.comment_enrichers:
-                ce.collect(comment, None, None)
-    
+        for c in comments:
+            for e in self.enrichers:
+                e.collect(c)
+
     # have every enricher process aggregate of comments, if defined
-    def dump_all(self, sources=None, wheres=None, fns=None):
+    def aggregate_all(self):
         # TODO: zipped multiple different parameters (as lists)
-        for ce in self.comment_enrichers:
-            ce.dump(None, None, None)
+        for e in self.enrichers:
+            e.aggregate()
 
     # have every enricher store internally-dumped data to external source
     def store_all(self, comments):
-        for comment, i in zip(comments, range(len(comments))):
-            for ce in self.comment_enrichers:
-                comment[ce.name] = ce.collection[ce.where][i]
+        for c, i in zip(comments, range(len(comments))):
+            for e in self.enrichers:
+                c[e.label] = e.data()[i]
     
-    # have every enricher flush current collection of comments
-    def flush_all(self):
-        for ce in self.comment_enrichers:
-            ce.flush()
+    # clears data
+    def clear_all(self):
+        for e in self.enrichers:
+            e.clear()
+    
 
 '''
 pre-defined aggregator examples
 '''
-ZSCORE_AGGREGATOR = Aggregator(name='zscore',
-                               fn_elementwise=None,
-                               fn_aggregate=stats.zscore,
-                               element_key='score',
-                               store='zscore_collection',
-                               source='zscore_collection',
-                               where=1)
+ZSCORE_AGGREGATOR = Aggregator(label='zscore',
+                               fn_map=None,
+                               fn_red=None,
+                               fn_agg=stats.zscore,
+                               key='score')
 
 # more complex since an external model is required
 def get_entities(element):
@@ -135,26 +100,22 @@ def get_entities(element):
     entities = spacy_nlp(element).ents
     return [{item.label_: item.text} for item in entities]
 
-ENTITIES_AGGREGATOR = Aggregator(name='entities',
-                                 fn_elementwise=get_entities,
-                                 fn_aggregate=None,
-                                 element_key='body',
-                                 store='entity_collection',
-                                 source='entity_collection',
-                                 where='entity_collection')
+ENTITIES_AGGREGATOR = Aggregator(label='entities',
+                                 fn_map=get_entities,
+                                 fn_red=None,
+                                 fn_agg=None,
+                                 key='body')
 
 # more complex since an external model is required
 def afinn_elementwise(element):
     afinn_nlp = afinn.Afinn(language='en', emoticons=True)
     return afinn_nlp.score(element)
 
-AFINN_AGGREGATOR = Aggregator(name='afinn_score',
-                              fn_elementwise=afinn_elementwise,
-                              fn_aggregate=None,
-                              element_key='body',
-                              store='afinn_collection',
-                              source='afinn_collection',
-                              where='afinn_collection')
+AFINN_AGGREGATOR = Aggregator(label='afinn_score',
+                              fn_map=afinn_elementwise,
+                              fn_red=None,
+                              fn_agg=None,
+                              key='body')
 
 # ensure data is valid for pipeline enrichment
 def validate(data):
@@ -167,23 +128,28 @@ def validate(data):
     assert len(data[0]['comments']) > 0 
 
 # pipeline enrichment that accepts Aggregator objects to define pipeline
-def enrich(path, comment_enrichers=[], submission_enrichers=[]):
+def enrich(path, enrichers=[]):
     data = tools.load_json(path)
     # validation step, begin work after
     validate(data)
     # TODO: deal w submission enrichers later...
-    pipeline = EnrichmentPipeline(comment_enrichers)
+    pipeline = EnrichmentPipeline(enrichers)
     # enrich data
     for submission in data:
         # collect all comments
         pipeline.collect_all(submission['comments'])
         # aggregate all
-        pipeline.dump_all()
+        pipeline.aggregate_all()
+        # save resultant data
         pipeline.store_all(submission['comments'])
-        # flush all
-        pipeline.flush_all()
+        # clear
+        pipeline.clear_all()
+    # ZSCORE_AGGREGATOR.collect({'score':5})
+    # ENTITIES_AGGREGATOR.collect({'body':'United States, Human, John Adams'})
+    # print(ZSCORE_AGGREGATOR.label, ZSCORE_AGGREGATOR.data())
+    # print(ENTITIES_AGGREGATOR.label, ENTITIES_AGGREGATOR.data())
 
     return data
 
 def enrich_test(path):
-    return enrich(path, comment_enrichers=[ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR, AFINN_AGGREGATOR])
+    return enrich(path, enrichers=[ZSCORE_AGGREGATOR, ENTITIES_AGGREGATOR, AFINN_AGGREGATOR])

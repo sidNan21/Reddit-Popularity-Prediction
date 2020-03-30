@@ -10,4 +10,4 @@ import json
 
 # hard-coded example
 data = enrich.enrich_test('./data/art_top10week_example.json')
-tools.save_json(data, 'art_top10week_enriched_example')
+tools.save_json(data, 'REVAMP_art_top10week_enriched_example')

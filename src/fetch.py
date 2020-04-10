@@ -50,7 +50,7 @@ formats raw reddit data into serialized jsons with structure:
             ]
     }
 '''
-def fetch(sub, time, num_posts, num_comments=None):
+def fetch(sub, time, num_posts, num_comments=None, depth=0):
     # top reddit posts provided target sub and time
     print('fetching top {0} posts from /r/{1} for time: {2}...'.format(num_posts,sub,time),
           ('' if not num_comments else 'limiting to {0} comments per post'.format(num_comments)))
@@ -62,7 +62,7 @@ def fetch(sub, time, num_posts, num_comments=None):
     iteration = 1
     for submission in posts:
         # no hierarchy for comments...
-        submission.comments.replace_more(limit=1)
+        submission.comments.replace_more(limit=depth)
         # basic post data
         # organize comment data
         for comment in submission.comments[:num_comments]:

@@ -3,7 +3,17 @@ tools.py
     simple script for useful functions
 '''
 
+import os
+import praw
 import json
+
+def redditclient():
+    print('connecting to reddit client...')
+    reddit = praw.Reddit(client_id=os.environ['REDDIT_CLIENT_ID'],
+                         client_secret=os.environ['REDDIT_CLIENT_SECRET'],
+                         user_agent='dct user agent')
+    print('connected!')
+    return reddit
 
 def save_json(data, filename=None):
     # provided no filename param, default to first post's id

@@ -30,5 +30,9 @@ filename = '{0}_top{1}{2}_t{3}' \
                     t.strftime(timeformat,t.gmtime())
                 ) if len(sys.argv) < 6 else sys.argv[5]
 
-submissions = fetch.fetch(subreddit, time, num_posts, num_comments, depth=1)
+submissions = fetch.fetch(subreddit =    subreddit, 
+                          time =         time, 
+                          num_posts =    num_posts, 
+                          num_comments = num_comments, 
+                          depth =        1)
 tools.save_json(submissions, filename)

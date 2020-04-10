@@ -10,18 +10,21 @@ fetch.py
         {subreddit}_top{num_posts}{time}_t{ddmm-HHMM}.json
 '''
 
-import os
 import json
 import praw
+import src.tools
+
+def fetch_controv_posts(sub, time):
+    # read-only reddit client
+    reddit = src.tools.redditclient()
+    posts = reddit.subreddit(sub).controversial(time)
+    return list(posts)
+
 
 def fetch_top_posts(sub, time):
     # read-only reddit client
-    print('Connecting to reddit client...')
-    reddit = praw.Reddit(client_id=os.environ['REDDIT_CLIENT_ID'],
-                         client_secret=os.environ['REDDIT_CLIENT_SECRET'],
-                         user_agent='dct user agent')
+    reddit = src.tools.redditclient()
     posts = reddit.subreddit(sub).top(time)
-    print('Connected!')
     return list(posts)
 
 '''
@@ -61,9 +64,10 @@ def fetch(sub, time, num_posts, num_comments=None, depth=0):
     print('serializing data...')
     iteration = 1
     for submission in posts:
-        # no hierarchy for comments...
+        # depth=0: no hierarchy for comments
+        # depth=1: 1 child allowed
+        # depth=n: n children allowed
         submission.comments.replace_more(limit=depth)
-        # basic post data
         # organize comment data
         for comment in submission.comments[:num_comments]:
             # basic comment data
@@ -76,7 +80,7 @@ def fetch(sub, time, num_posts, num_comments=None, depth=0):
             }
             submission_list.append(comment_data)
         percent = (iteration * (1+num_comments))/(num_posts + num_posts*num_comments) * 100
-        print("Percent Complete: " + str(percent) + "%")
+        print("percent complete: " + str(percent) + "%")
         iteration += 1
 
     print('done!')

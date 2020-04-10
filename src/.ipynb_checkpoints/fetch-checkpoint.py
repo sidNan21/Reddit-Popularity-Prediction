@@ -62,8 +62,16 @@ def fetch(sub, time, num_posts, num_comments=None):
     iteration = 1
     for submission in posts:
         # no hierarchy for comments...
-        submission.comments.replace_more(limit=1)
+        submission.comments.replace_more(limit=3)
         # basic post data
+        submission_data = {
+            'created_utc'   : submission.created_utc,
+            'body'          : submission.title + "\n" + submission.selftext,
+            'score'         : submission.score,
+            'distinguished' : submission.distinguished,
+            'post'          : True,
+        }
+        submission_list.append(submission_data)
         # organize comment data
         for comment in submission.comments[:num_comments]:
             # basic comment data
@@ -71,8 +79,8 @@ def fetch(sub, time, num_posts, num_comments=None):
                 'created_utc'   : comment.created_utc,
                 'body'          : comment.body,
                 'score'         : comment.score,
-                'gilds'         : comment.gilded,
                 'distinguished' : comment.distinguished,
+                'post'          : False,
             }
             submission_list.append(comment_data)
         percent = (iteration * (1+num_comments))/(num_posts + num_posts*num_comments) * 100

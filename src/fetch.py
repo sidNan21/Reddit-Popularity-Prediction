@@ -53,7 +53,7 @@ formats raw reddit data into serialized jsons with structure:
             ]
     }
 '''
-def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
+def flat_fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
     # top reddit posts provided target sub and time
     print('fetching posts from {0}...\n \
            sorting by: {1}, scraping {2} posts, {3} comments each (depth={4})' \

@@ -15,10 +15,8 @@ def redditclient():
     print('connected!')
     return reddit
 
-def save_json(data, filename=None):
-    # provided no filename param, default to first post's id
-    fn = filename if filename else data[0]['id']
-    with open('./data/' + fn + '.json', 'w', encoding='utf-8') as f:
+def save_json(data, path):
+    with open(path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 def load_json(path):

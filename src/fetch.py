@@ -53,10 +53,11 @@ formats raw reddit data into serialized jsons with structure:
             ]
     }
 '''
-def fetch(sub, time, num_posts, num_comments=None, depth=0):
+def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
     # top reddit posts provided target sub and time
-    print('fetching top {0} posts from /r/{1} for time: {2}...'.format(num_posts,sub,time),
-          ('' if not num_comments else 'limiting to {0} comments per post'.format(num_comments)))
+    print('fetching posts from {0}...\n \
+           sorting by: {1}, scraping {2} posts, {3} comments each (depth={4})' \
+           .format(sub, sort, num_posts, num_comments, depth))
     posts = fetch_top_posts(sub, time)[:num_posts]
 
     # list to build json

@@ -3,8 +3,8 @@ enrich.py
     enrichment of raw reddit data stored as .json in ./data/
 '''
 
-import src.enrichment as enrich
-import src.tools as tools
+from src import enrichment as enrich
+from src import tools as tools
 import sys
 import json
 

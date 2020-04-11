@@ -1,0 +1,15 @@
+# (*) note that `pip install` only ignores lines with `#`
+# reddit API
+praw
+#
+# data analysis and modelling
+numpy
+scipy
+sklearn
+matplotlib
+pandas
+#
+# useful stats and existing models
+afinn
+spacy
+

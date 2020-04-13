@@ -60,13 +60,11 @@ def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
            .format(sub, sort, num_posts, num_comments, depth))
     posts = praw_connect_and_fetch(sub, time, sort)[:num_posts]
 
-    # list to build json
-    comment_list = list()
     print('serializing data...')
-    iteration = 0
+    comment_list, iteration = list(), 0
     for submission in posts:
-        base_time = submission.created_utc
-        store, comment_list = dict(), list()
+        base_time = submission.created_utc # base time
+        store = dict() # store depth and parent utc
         # depth=0: no hierarchy for comments
         # depth=1: 1 child allowed
         # depth=n: n children allowed
@@ -74,8 +72,8 @@ def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
         comment_queue = submission.comments[:]  # Seed with top-level
         # organize comment data
         while comment_queue:
-            comment = comment_queue.pop(0)
-            comment_queue.extend(comment.replies)
+            comment = comment_queue.pop(0) # Get current
+            comment_queue.extend(comment.replies) # Add replies to q
             if comment.parent_id[:3] == 't3_':
                 store[comment.id] = (0, comment.created_utc)
                 diff = comment.created_utc - base_time
@@ -98,6 +96,7 @@ def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
         iteration += 1
         percent = (iteration)/(num_posts) * 100
         print("percent complete: " + str(percent) + "%")
+        print(len(comment_list))
 
     print('done!')
     # serialize to json

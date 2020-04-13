@@ -66,7 +66,7 @@ def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
     iteration = 0
     for submission in posts:
         base_time = submission.created_utc
-        depth_store, comment_store = dict(), dict()
+        store, comment_list = dict(), list()
         # depth=0: no hierarchy for comments
         # depth=1: 1 child allowed
         # depth=n: n children allowed
@@ -77,30 +77,24 @@ def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
             comment = comment_queue.pop(0)
             comment_queue.extend(comment.replies)
             if comment.parent_id[:3] == 't3_':
-                depth_store[comment.id] = 0
+                store[comment.id] = (0, comment.created_utc)
+                diff = comment.created_utc - base_time
             else:
-                depth_store[comment.id] = depth_store[comment.parent_id[3:]]+1
+                store[comment.id] = (store[comment.parent_id[3:]][0]+1, comment.created_utc)
+                diff = comment.created_utc - store[comment.parent_id[3:]][1]
             comment_data = {
                 'id'            : comment.id,
                 'parent_id'     : comment.parent_id,
                 'top_level'     : comment.parent_id[:3] == 't3_',
-                'depth'         : depth_store[comment.id],
+                'depth'         : store[comment.id][0],
                 'created_utc'   : comment.created_utc,
+                'time_dff'      : diff,
                 'body'          : comment.body,
                 'score'         : comment.score,
                 'gilds'         : comment.gilded,
                 'distinguished' : comment.distinguished,
             }
-            comment_store[comment.id] = comment_data
-        '''for _id in comment_store:
-            comment = comment_store[_id]
-            diff = None
-            if comment['parent_id'][:3] == 't3_':
-                diff = comment['created_utc'] - base_time
-            else:
-                diff = comment['created_utc'] - comment_store[comment['parent_id']]['created_utc']
-            comment_store[_id]['time_diff'] = diff'''
-        comment_list += comment_store.values()
+            comment_list.append(comment_data)
         iteration += 1
         percent = (iteration)/(num_posts) * 100
         print("percent complete: " + str(percent) + "%")

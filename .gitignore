@@ -1,6 +1,7 @@
 */__pycache__/*
 __pycache__
 *.json
+.DS_Store
 !*example*.json
 */.ipynb_checkpoints/*
 .ipynb_checkpoints

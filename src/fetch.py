@@ -95,8 +95,9 @@ def fetch(sub, time, sort='top', num_posts=0, num_comments=0, depth=0):
             comment_list.append(comment_data)
         iteration += 1
         percent = (iteration)/(num_posts) * 100
-        print("percent complete: " + str(percent) + "%")
-        print(len(comment_list))
+        print('{0:.2f}% complete'.format(percent))
+        # print("percent complete: " + str(percent) + "%")
+        # print(len(comment_list))
 
     print('done!')
     # serialize to json

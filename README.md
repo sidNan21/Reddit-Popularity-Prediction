@@ -1,6 +1,6 @@
 # Predicting Comment Popularity within Online Communities using Multiclass Classification
 
-Multiclass classification for comment popularity using `sklearn`. Comment data primarily fetched using PRAW, from different user-created discussion boards from https://www.reddit.com/.
+Multiclass classification for comment popularity using [sklearn](https://scikit-learn.org/stable/). Comment data primarily fetched using PRAW, from different user-created discussion boards from https://www.reddit.com/.
 
 ## How to perform experiments yourself:
 

@@ -19,4 +19,5 @@ Multiclass classification for comment popularity using [sklearn](https://scikit-
 
 ## Acknowledgements:
 
-This project was done by Cory Kim and Siddharth Nanda, computer science students in the University of Virginia School of Engineering, under the guidance of Professor N. Rich Nguyen.
+This project was done by Cory Kim and Siddharth Nanda, computer science students in the University of Virginia School of Engineering, under the guidance of Professor N. Rich Nguyen. It was directly inspired by ["Hacking the Hivemind:
+Predicting Comment Karma on Internet Forums"](http://cs229.stanford.edu/proj2014/Daria%20Lamberson,Leo%20Martel,%20Simon%20Zheng,Hacking%20the%20Hivemind.pdf): a 2014 research paper by Daria Lamberson, Leo Martel, and Simon Zheng at Stanford University.
